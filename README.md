@@ -10,4 +10,4 @@ After doing that go on the left sidebar and create a bot. After doing this use t
 you discord server: https://discordapp.com/api/oauth2/authorize?client_id=(INSERT YOUR BOT'S CLIENT ID)&scope=bot
 
 You can find your client id under the general information page for your application. Then go down to your bot 
-and grab the Token and put that into the designated spot. After that just launch the script and it should run.
+and grab the Token and put that into the client.run('') position in the py file. After that just launch the script and it should run.
