@@ -1,7 +1,5 @@
 import discord
 import asyncio
-from PIL import Image
-
 
 
 client = discord.Client()
@@ -51,4 +49,4 @@ async def on_message(message):
     
     
 
-client.run('')
+client.run('') #Put your discord token here
