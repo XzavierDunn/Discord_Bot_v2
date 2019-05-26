@@ -4,7 +4,8 @@ import discord
 import youtube_dl
 from discord.ext import commands
 
-token = ''  # Enter your bot token
+# Enter your bot token
+token = ''
 
 youtube_dl.utils.bug_reports_message = lambda: ''
 
@@ -20,7 +21,7 @@ ytdl_format_options = {
     'quiet': True,
     'no_warnings': True,
     'default_search': 'auto',
-    'source_address': '0.0.0.0'  # bind to ipv4 since ipv6 addresses cause issues sometimes
+    'source_address': '0.0.0.0'
 }
 
 ffmpeg_options = {
@@ -57,11 +58,26 @@ class Music(commands.Cog):
         Ex: "*play music.mp3"
         """
 
+        query = f'music/{query}.mp3'
         source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(query))
-        ctx.voice_client.play(source, after=lambda e: print('Player error: %s' % e) if e else None)
+        ctx.voice_client.play(source, after=lambda e: print(
+            'Player error: %s' % e) if e else None)
 
-        print("Playing")
-        await ctx.send(f'Now playing: {query}')
+    @commands.command(pass_context=True, no_pm=True)
+    async def pause(self, ctx):
+        """Pauses the currently played song."""
+        state = self.get_voice_state(ctx.message.server)
+        if state.is_playing():
+            player = state.player
+            player.pause()
+
+    @commands.command(pass_context=True, no_pm=True)
+    async def resume(self, ctx):
+        """Resumes the currently played song."""
+        state = self.get_voice_state(ctx.message.server)
+        if state.is_playing():
+            player = state.player
+            player.resume()
 
     @commands.command()
     async def stop(self, ctx):
@@ -76,12 +92,12 @@ class Music(commands.Cog):
                 await ctx.author.voice.channel.connect()
             else:
                 await ctx.send("You are not connected to a voice channel.")
-                raise commands.CommandError("Author not connected to a voice channel.")
+                raise commands.CommandError(
+                    "Author not connected to a voice channel.")
         elif ctx.voice_client.is_playing():
             ctx.voice_client.stop()
 
-bot = commands.Bot(command_prefix=commands.when_mentioned_or("*"),
-                   description='Relatively simple music bot example')
+bot = commands.Bot(command_prefix=commands.when_mentioned_or("*"))
 
 
 @bot.event
