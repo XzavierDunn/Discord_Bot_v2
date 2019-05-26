@@ -1,13 +1,29 @@
-# Discord_Bot_v2
 
-This bot currently runs with Python 3.6:
-pip install discord
+Discord Bot/Voicebot
 
-Basic bot that responds to a few keywords.
+I obviously don't fully understand what i'm doing here yet
+so i have two files one starts the voicebot and the other starts
+the messaging bot. I split it because you can't do 
 
-To make your own bot go here: https://discordapp.com/developers/applications/ and create an application.
-After doing that go on the left sidebar and create a bot. After doing this use this link to add your bot to
-you discord server: https://discordapp.com/api/oauth2/authorize?client_id=(INSERT YOUR BOT'S CLIENT ID)&scope=bot
+bot.run(token) and client.run(token) in the same file because only
+the first one runs.
 
-You can find your client id under the general information page for your application. Then go down to your bot 
-and grab the Token and put that into the client.run('') position in the py file. After that just launch the script and it should run.
+If for whatever reason you're here and actually read this you can 
+clone this repo and hit that
+
+pip install -r requirements.txt
+
+and I recommend using a virtualenvironment.
+
+Also you will have to run over to 
+"https://discordapp.com/developers/applications/"
+and start your own application and bot then get the bot's token and use that in each file.
+
+To add the bot to your channels go to 
+
+"https://discordapp.com/oauth2/authorize?client_id=ENTERYOURAPPLICATIONCLIENTID&scope=bot"
+
+This was built using the Discord.py package
+
+Github: "https://github.com/Rapptz/discord.py"
+Docs: "https://discordpy.readthedocs.io/en/latest/"
