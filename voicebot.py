@@ -4,7 +4,7 @@ import youtube_dl
 from discord.ext import commands
 
 # Enter your bot token
-token = ''
+token = 'NTgyMDg3NTM5MTg4NDMyOTEy.XXUNoA.4DyfCLWM4dUrMI2g_tSmyBDaBLQ'
 
 youtube_dl.utils.bug_reports_message = lambda: ''
 
